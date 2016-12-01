@@ -16,9 +16,13 @@ app.get('/', function(req, res) {
   res.render("index");
 });
 
-var url = "http://api.brewerydb.com/v2//"
+
 app.get('/sample', function(req, res) {//my url...maybe use req.params to replace with api url
     res.send('this is a sample!');
+});
+
+app.get('/', function(req, res) {
+  res.render("index");
 });
 
 

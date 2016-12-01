@@ -3,33 +3,32 @@ $(document).ready(function(){
 
 var api = "http://api.giphy.com/v1/gifs/search?";
 var apiKey = "";
-var search = "ryan+gosling";//I need to change the value of this using the input element
+// var search = "ryan+gosling";//I need to change the value of this using the input element
 
 var input;
 
 
 var button = $("button").on("click", getJSON);
 
+
+
 input = $("#search_giphs");
-
-
-
-
-
-
-
 
 
 //gets JSON data from url
 function getJSON() {
-$.getJSON( api + apiKey + input.val(), function () {
-
-
-
+  $.ajax({
+    url: api + apiKey + input.val(),
+    method: "GET"
   })
 
-//goes through JSON data like objects and selects giphy url to display in a
-//img tag that i created using jquery
+// $.getJSON( api + apiKey + input.val(), function () {
+
+
+
+//   })
+
+
 .done(function(giphy) {
     for (var i = 0; i < giphy.data.length; i++) {
     $("<img>").attr("src", giphy.data[i].images.original.url).appendTo("body");
