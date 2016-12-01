@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var BeerSchema = new Schema({
   name: String
-  alcohol: Number
+
 });
 
-module.exports = mongoose.model('Beers', BeerSchema);
+module.exports = mongoose.model('Beer', BeerSchema);
