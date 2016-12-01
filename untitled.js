@@ -10,7 +10,7 @@ var input;
 
 var button = $("button").on("click", getJSON);
 
-input = $("input");
+input = $("#search_giphs");
 
 
 
