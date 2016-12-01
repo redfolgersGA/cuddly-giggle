@@ -3,58 +3,74 @@ $(document).ready(function(){
 
 var api = "http://api.giphy.com/v1/gifs/search?";
 var apiKey = "";
-var search = "Matthew+Mcconaughey";
+var search = "ryan+gosling";//I need to change the value of this using the input element
 
-var apiWhole =
-
-var getData = $.getJSON( api + apiKey + search, function () {
+var input;
 
 
+var button = $("button").on("click", getJSON);
 
-  // // for (var i = 0; i < giphy.data.length; i++) {
-  // //   <img src =
-  // }
+input = $("input");
 
-    console.log(getData)
+
+
+
+
+
+
+
+
+//gets JSON data from url
+function getJSON() {
+$.getJSON( api + apiKey + input.val(), function () {
+
+
 
   })
+
+//goes through JSON data like objects and selects giphy url to display in a
+//img tag that i created using jquery
 .done(function(giphy) {
     for (var i = 0; i < giphy.data.length; i++) {
     $("<img>").attr("src", giphy.data[i].images.original.url).appendTo("body");
   }
  })
+}
+
+getJSON();
 
 
 
 
- // // for (var i = 0; i < giphy.data.length; i++) {
-  // //   <img src =
-  // }
-
-// giphy.data[i].images.original.url
-// {
-//   dataType: "json",
-//   url: url1 + word + url2,
-//   success: success
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+// function setup () {
+//   jQuery.getJSON(url1 + word + url2, gotData);
+// }
+
+// function gotData(data) {
+//   console.log(data);
+// }
+
+
+// $('input').keyup(function() {
+//   var value = $(this).val();
+//   $('p').text(value);
 // });
+// .keyup();
 
-
-
-
-function setup () {
-  jQuery.getJSON(url1 + word + url2, gotData);
-}
-
-function gotData(data) {
-  console.log(data);
-}
-
-
-// var api =
-
-// var apikey =
 
 
 
