@@ -2,17 +2,16 @@ $(document).ready(function(){
   console.log('page loaded');
 
 var api = "http://api.giphy.com/v1/gifs/search?";
-var apiKey = "";
+var apiKey = "&api_key=dc6zaTOxFJmzC&q=";
 // var search = "ryan+gosling";//I need to change the value of this using the input element
 
 var input;
-
+input = $("#search_giphs");
 
 var button = $("button").on("click", getJSON);
 
 
 
-input = $("#search_giphs");
 
 
 //gets JSON data from url
@@ -30,13 +29,33 @@ function getJSON() {
 
 
 .done(function(giphy) {
+    $('img').remove();
     for (var i = 0; i < giphy.data.length; i++) {
     $("<img>").attr("src", giphy.data[i].images.original.url).appendTo("body");
   }
+
  })
+
+
 }
 
 getJSON();
+
+function sendToDb() {
+  console.log(input)
+  $.ajax({
+    url: '/api/searchTerm',
+    method: 'POST',
+    data: {input: input.val()},
+    success: function(data){
+      console.log('response', data)
+    }
+  })
+}
+
+$('#save').click(sendToDb)
+
+// $("<img>").css("text-align, center")
 
 
 

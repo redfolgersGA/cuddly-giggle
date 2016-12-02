@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS searches;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50) UNIQUE
+);
+
+CREATE TABLE searches (
+  id SERIAL PRIMARY KEY,
+  term VARCHAR(50),
+  user_id INTEGER NOT NULL REFERENCES users(id)
+)
